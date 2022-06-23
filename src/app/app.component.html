@@ -1,7 +1,106 @@
+<!-- <app-element *ngFor="let item of elements" [itemElem]="item"></app-element> -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div formGroupName="userData">
+                    <div class="form-group">
+                        <label for="username" class="required">UserName</label>
+                        <input type="text" class="form-control" id="username" formControlName="username">
+                        <span class="help-block error"
+                            *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched">
+                            Please Enter valid userName</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="required">Email</label>
+                        <input type="text" class="form-control" id="email" formControlName="email">
+                        <span class="help-block error"
+                            *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">
+                            Please Enter valid Email Id</span>
+                    </div>
+                </div>
+                <div class="radio" *ngFor="let gender of genders">
+                    <label for="gender">
+                        <input type="radio" [value]="gender" formControlName="gender">{{gender}}
+                    </label>
+                </div>
+                <div formArrayName="hobbies" class="form-group">
+                    <label for="hobbies" class="required">Your Hobbies</label>
+                    <div>
+                        <button class="btn btn-default btn-sm mt-3" type="button" (click)=addHobbies()> AddHobby
+                        </button>
+                    </div>
+
+                    <div class="form-group" *ngFor="let hobbyControl of controls; let i=index">
+
+                        <input type="text" id="new-hobby" class="form-control" [formControlName]="i">
+                        <span class="help-block error"
+                            *ngIf="!signupForm.get('hobbies').valid && signupForm.get('hobbies').touched">
+                            Please Enter valid Hobby</span>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Save</button>
+                </div>
+
+            </form>
+            <div class="row margin" *ngIf="result.length>0">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="thead-light">
+                            <th scope="col">Nmae</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Hobbies</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of result">
+                            <td>{{item.userData.username}}</td>
+                            <td>{{item.userData.email}}</td>
+                            <td>{{item.gender}}</td>
+                            <td>{{item.hobbies}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row form2">
+        <div class="col-xs-12">
+            <button class="btn btn-primary" (click)="onlyOdd=!onlyOdd">
+                <br><br>
+                only show odd number
+            </button>
+            <ul class="list-group">
+                <div *ngIf="onlyOdd">
+                    <li class="list-group-item" [ngClass]="{odd: odd%2!==0}"
+                        [ngStyle]="{backgroundColor:odd%2!==0?'yellow':transparent}" *ngFor="let odd of oddNumber">
+                        {{odd}}
+                    </li>
+                </div> -->
+    <!-- <ng-template [ngIf]="!onlyOdd"> -->
+    <!-- <div *appUnLess="onlyOdd">
+                    <li class="list-group-item" *ngFor="let even of evenNumber" [ngClass]="{even: even%2!==0}"
+                        [ngStyle]="{backgroundColor:even%2!==0?'yellow':transparent}">
+                        {{even}}
+                    </li>
+                </div> -->
+    <!-- </ng-template> -->
+    <!-- </ul>
+            <p appBasicHighlight>this is new custom basic directive!</p>
+            <p appBetterHighlight="red" defaultColor="yellow">this is new custom better directive!</p>
 
 
+            <div [ngSwitch]="value">
+                <p *ngSwitchCase="5">value is 5</p>
+                <p *ngSwitchCase="10">value is 10</p>
+                <p *ngSwitchCase="100">value is 100</p>
+                <p *ngSwitchDefault>value is default</p>
+            </div>
+        </div>
 
-
-
-
-    <span>{{ title }} app is running!</span>
+    </div>
+</div> -->

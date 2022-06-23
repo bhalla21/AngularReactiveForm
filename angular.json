@@ -66,11 +66,13 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "FirstProject:build"
+            "browserTarget": "FirstProject:build",
+            "port":3000
           },
           "configurations": {
             "production": {
-              "browserTarget": "FirstProject:build:production"
+              "browserTarget": "FirstProject:build:production",
+              "port":3000
             }
           }
         },
